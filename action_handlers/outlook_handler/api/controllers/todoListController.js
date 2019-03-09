@@ -196,7 +196,7 @@ var options_createEvent = { method: 'POST',
      'Content-Type': 'application/json' },
   body: { 
      subject: 'Let\'s go for Movie229',
-     body: { contentType: 'HTML', content: 'Lakshmi\'s NTR' },
+     body: { contentType: 'HTML', content: 'Meeting Agenda' },
      start: 
       { dateTime: '2019-03-15T12:00:00',
         timeZone: 'India Standard Time' },
