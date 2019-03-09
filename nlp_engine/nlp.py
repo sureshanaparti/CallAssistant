@@ -25,7 +25,7 @@ class AllResource(object):
         self.nlp = spacy.load('en_coref_lg')
         print("nlp resource loaded.")
         self.response = None
-        self.notifier = notifier("nlp") 
+        self.notifier = notifier("NLP-coreferencer") 
         self.meetingDictionary = {'time':None, 'date':None, 'attendees':[], 'host':None, 'webex':None, 'room':None}
         self.teamMembers = {"Hari","Bharat","Suresh","Sadhu","Pavan","Srinivas","Lokesh","Alok","Srikanth","Santosh","Tirumala"}
 

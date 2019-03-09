@@ -24,7 +24,7 @@ class AllResource(object):
         self.textLabler = spacy.load('en_core_web_lg')
         print("nlp resource loaded.")
         self.response = None
-        self.notifier = notifier("Analyser")
+        self.notifier = notifier("NLP-analyser")
         self.teamMembers = {"Hari","Bharat","Suresh","Sadhu","Pavan","Srinivas","Lokesh","Alok","Srikanth","Santosh","Tirumala"}
     
     def addAttendees(self, attendees):
@@ -132,6 +132,7 @@ class AllResource(object):
 
         if len(self.ticketDictionary['id']) != 0:
             self.ticketDictionary['jobid'] = jobid
+            self.ticketDictionary['id'] = ",".join(list(self.ticketDictionary['id']))
             self.actionList.append(self.ticketDictionary)
         return self.actionList
 
