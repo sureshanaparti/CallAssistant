@@ -38,7 +38,7 @@ global.locatinHash['nirvana'] = {name:'Hyd-WaveRock-11th Floor Nirvana (Projecto
 global.locatinHash['kena'] = {name:'Hyd-WaveRock-11th Floor Kena'};
 
 
-global.token="Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFDRWZleFh4amFtUWIzT2VHUTRHdWd2dDZJejJpUTVYZk9xYmJnang1VDlYTS13TnlBQTd1Tk44QmdJZEhaWWRyOGxqbUFwMXoxd0dZMkdHd196OWY0eWkxd3otVnNsUVN3aXM0UVRMNUVqLXlBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIiwia2lkIjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xZjRiZWFjZC1iN2FhLTQ5YjItYWFhMS1iODUyNWNiMjU3ZTAvIiwiaWF0IjoxNTUyMTQ1MjI0LCJuYmYiOjE1NTIxNDUyMjQsImV4cCI6MTU1MjE0OTEyNCwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhLQUFBQXBEd3JoYXlyNkFyQnFwV25oV1IvalBGRTNRM3RJSVh4YlM1cm9MUmNhYTA9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJiaXR0dWFwcCIsImFwcGlkIjoiYWQ0Y2Y0NGYtZjRjMC00MjAzLTgyNzktNDNiZDcwMGY5NWUzIiwiYXBwaWRhY3IiOiIxIiwiZmFtaWx5X25hbWUiOiJBcmF2YXBhbGxpIiwiZ2l2ZW5fbmFtZSI6IlBhdmFuIEt1bWFyIiwiaXBhZGRyIjoiMTE1LjExNC45My42NyIsIm5hbWUiOiJQYXZhbiBLdW1hciBBcmF2YXBhbGxpIiwib2lkIjoiM2EwNDNjZWYtZTBiMi00ODk0LWJkOGUtNTVlNWFhM2QxZTVlIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIwMDA0NzgzNTQtMjk5NTAyMjY3LTcyNTM0NTU0My0xOTEyMjAiLCJwbGF0ZiI6IjUiLCJwdWlkIjoiMTAwMzdGRkU5RDI5REMyRSIsInNjcCI6IkNhbGVuZGFycy5SZWFkIENhbGVuZGFycy5SZWFkLlNoYXJlZCBDYWxlbmRhcnMuUmVhZFdyaXRlIENhbGVuZGFycy5SZWFkV3JpdGUuU2hhcmVkIENvbnRhY3RzLlJlYWQgTWFpbC5SZWFkIG9wZW5pZCBwcm9maWxlIFVzZXIuUmVhZCBlbWFpbCIsInNpZ25pbl9zdGF0ZSI6WyJpbmtub3dubnR3ayIsImttc2kiXSwic3ViIjoiamwxS1J5UzhQSVJnSUxsQTlSWXVLQkFzRjZKSXB5LWFUN1NqdndvZ01vWSIsInRpZCI6IjFmNGJlYWNkLWI3YWEtNDliMi1hYWExLWI4NTI1Y2IyNTdlMCIsInVuaXF1ZV9uYW1lIjoicGF2YW5rdW1hcl9hQHBlcnNpc3RlbnQuY28uaW4iLCJ1cG4iOiJwYXZhbmt1bWFyX2FAcGVyc2lzdGVudC5jby5pbiIsInV0aSI6IkRKUjR6VkFPTWt5UXRfTHY2Y1FQQUEiLCJ2ZXIiOiIxLjAiLCJ4bXNfc3QiOnsic3ViIjoiRmJSNEswNXV0T09FU3dDWFMtNjZCaHVtYmlsdlpGVzBjbTNIR0NQQ09sdyJ9LCJ4bXNfdGNkdCI6MTM3MDU5MjU2NH0.MH2tFY61g4jRHa1_tc5WEnYCE2UGgTVoOIkxn0hwwQFE7mQgHWLnN5_PlvD6hY5BAZn45sDdkryB3MUzCFhzW2CaG2xoc7f2wetz5HFBysyglNmnr9SEgXkr3FlVrMMGtpbozYahs5G6NNEI6fw8YuJDtAR6NVLvaiu7aLiIQlCVfYXFU4vYJDcnV3o6luTr_4LrukzLNTfceXUS7ndnf3E2TbgJ5Q80hKbJuN--2wVYtr49ckG1rTe-EkPFOB1-ZaAiec80d08ZTvvOeO-8urjuUO5YLH6lYKmUwgjkawxzX3CPW5RXoNC3L7zYjdCi5LXIDEeGSfj8qexUi4jNpA";
+global.token="Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFDRWZleFh4amFtUWIzT2VHUTRHdWd2eWdlYVhwRUVaNVIxa2Y3Xzh6T1hxSWdhcWI1cm54d1hFSmllTlZVYnFPRFdHelQ4bEcyY2VPcWJkQzFvMTEwZDlBendMbm9lYUhoQ3RVaGFNWXVmY1NBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIiwia2lkIjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xZjRiZWFjZC1iN2FhLTQ5YjItYWFhMS1iODUyNWNiMjU3ZTAvIiwiaWF0IjoxNTUyMTU2MjM5LCJuYmYiOjE1NTIxNTYyMzksImV4cCI6MTU1MjE2MDEzOSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IjQySmdZRGdjeFd1Ly9PQlZNNGRmUVFuVEdLYjRKdC9XVHZuKzkvVTc2eEwxQ3c5U1BPTUIiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6ImJpdHR1YXBwIiwiYXBwaWQiOiJhZDRjZjQ0Zi1mNGMwLTQyMDMtODI3OS00M2JkNzAwZjk1ZTMiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkFyYXZhcGFsbGkiLCJnaXZlbl9uYW1lIjoiUGF2YW4gS3VtYXIiLCJpcGFkZHIiOiIxMTUuMTE0LjkzLjY3IiwibmFtZSI6IlBhdmFuIEt1bWFyIEFyYXZhcGFsbGkiLCJvaWQiOiIzYTA0M2NlZi1lMGIyLTQ4OTQtYmQ4ZS01NWU1YWEzZDFlNWUiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMjAwMDQ3ODM1NC0yOTk1MDIyNjctNzI1MzQ1NTQzLTE5MTIyMCIsInBsYXRmIjoiNSIsInB1aWQiOiIxMDAzN0ZGRTlEMjlEQzJFIiwic2NwIjoiQ2FsZW5kYXJzLlJlYWQgQ2FsZW5kYXJzLlJlYWQuU2hhcmVkIENhbGVuZGFycy5SZWFkV3JpdGUgQ2FsZW5kYXJzLlJlYWRXcml0ZS5TaGFyZWQgQ29udGFjdHMuUmVhZCBNYWlsLlJlYWQgb3BlbmlkIHByb2ZpbGUgVXNlci5SZWFkIGVtYWlsIiwic2lnbmluX3N0YXRlIjpbImlua25vd25udHdrIiwia21zaSJdLCJzdWIiOiJqbDFLUnlTOFBJUmdJTGxBOVJZdUtCQXNGNkpJcHktYVQ3U2p2d29nTW9ZIiwidGlkIjoiMWY0YmVhY2QtYjdhYS00OWIyLWFhYTEtYjg1MjVjYjI1N2UwIiwidW5pcXVlX25hbWUiOiJwYXZhbmt1bWFyX2FAcGVyc2lzdGVudC5jby5pbiIsInVwbiI6InBhdmFua3VtYXJfYUBwZXJzaXN0ZW50LmNvLmluIiwidXRpIjoibHVCWjJDQlhyay1qNlJJQW0yaGFBQSIsInZlciI6IjEuMCIsInhtc19zdCI6eyJzdWIiOiJGYlI0SzA1dXRPT0VTd0NYUy02NkJodW1iaWx2WkZXMGNtM0hHQ1BDT2x3In0sInhtc190Y2R0IjoxMzcwNTkyNTY0fQ.WfY8vsu_uFdZZt7Qbgy6vExUPziGxjUYwnAut7AZMopxHDeHgc0JO3J5Q7GnFZqB4l-y0bk-3MZ0yJZQ2Z-mZ_3oY3Vqyde5z9fHf1P5D6HiCo9FLj8WKjIu5LYmRNGU1XFkV4Kxv50XSLD1zzhHV6NMCYfYFue1PlMWVgx2E7nb3XyJEx0xqi26EYCacSudwhB5r6sDkCcfR9Sryv8wU6ZcEJpKC89DOhTfYbwG9wn1VlJOPbqWMO8_sK8OK2zA6f7hEKSo6mIBXIHiEMDSbHO6XtD9X-HqmMO8wXoUNsGTWVPHhp66g0gkOZN6jTtIppyBayuRPFTkaWyavYeDSw";
 
 //var mongoose = require('mongoose'),
   //Task = mongoose.model('Tasks');
@@ -161,15 +161,21 @@ exports.create_a_task = function(req, res) {
      console.log(options_createEvent);
     console.log("  ====== > ", options_createEvent.body.attendees["0"].emailAddress);
     console.log("  ====== > ", options_createEvent.body.location);
+    global.log_event(global.jobid, "log", "scheduling meeting based on conversation..");
   request(options_createEvent, function (error, response, body) {
       console.log("inside post fire ");
-  if (error) throw new Error(error);
+  if (error) {
+      global.log_event(global.jobid, "error", error);
+      throw new Error(error);
+  }
 
   console.log(body);
       resResult = body;
       console.log("inside post fire2 ");
       console.log(resResult);
 });
+    global.log_event(global.jobid, "log", 'Meeting created for attendees ['+options_createEvent.body.attendees["0"].emailAddress.address+','+options_createEvent.body.attendees["1"].emailAddress.address+']'+' Organizer : [pavankumar_a@persistent.co.in]'+ ' Location: ['+options_createEvent.body.location.displayName+']' + 'start time : ['+options_createEvent.body.start.dateTime+']'+ ' end time : ['+options_createEvent.body.end.dateTime + ']'+'Agenda :['+options_createEvent.body.subject+']');
+
     
     res.json(resResult);
 };
@@ -261,6 +267,24 @@ global.locationHashSerach = function(location2)   {
     }    
 }; 
     
+let anchor_url="http://localhost:3000/notifyEvent"
+
+global.log_event = function(jobid, type, message) {
+
+var req_body={ "job_id" : jobid, "type" : type, "source" : "action_handler", "message" : message }
+ console.log("Executing log_event");
+
+ request.post(
+     anchor_url,
+     { json: req_body },
+     function (error, response, body) {
+         if (!error && response.statusCode == 200) {
+             console.log(body);
+         }
+     }
+ );
+
+}
     
     
 exports.delete_a_task = function(req, res) {
