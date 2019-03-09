@@ -37,7 +37,7 @@ class ActionsOrReminders extends React.Component {
       <div>
         <h4>Actions</h4>
         <ListGroup variant='flush'>
-          {this.props.data.map((prop, index) => {
+          {data.map((prop, index) => {
             return (<ListGroup.Item variant="primary" key={`${index}`}>
               {prop.message}
               <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow}>
