@@ -8,6 +8,14 @@ const serverPort = 3000,
     server = http.createServer(app),
     WebSocket = require("ws"),
     websocketServer = new WebSocket.Server({ server });
+global.wss = websocketServer;
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+var routes = require('./api/routes/anchorRoutes')
+routes(app);
 
 //when a websocket connection is established
 websocketServer.on('connection', (webSocketClient) => {
