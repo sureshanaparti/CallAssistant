@@ -61,11 +61,11 @@ class App extends React.Component {
           <button type="button" className='openbtn' onClick={this.showNotificationPane}>&#9776;</button>
         </header>
         <section id='section'>
-          <div className='sidebar'  ref={this.sideBar}>
+          <div className='sidebar'  ref={this.sideBar} style={{width: '30%'}}>
             <Notification data={ this.state.data }/>
           </div>
           <div id='main' ref={this.main}>
-            <ActionsOrReminders data={ this.state.data }/>
+            <ActionsOrReminders data={ this.state.data } style={{marginRight: '30%'}}/>
           </div>
         </section>
         <Websocket url='ws://localhost:3000'
