@@ -64,8 +64,8 @@ class App extends React.Component {
           <div className='sidebar'  ref={this.sideBar} style={{width: '30%'}}>
             <Notification data={ this.state.data }/>
           </div>
-          <div id='main' ref={this.main}>
-            <ActionsOrReminders data={ this.state.data } style={{marginRight: '30%'}}/>
+          <div id='main' ref={this.main} style={{marginRight: '30%'}}>
+            <ActionsOrReminders data={ this.state.data }/>
           </div>
         </section>
         <Websocket url='ws://localhost:3000'
