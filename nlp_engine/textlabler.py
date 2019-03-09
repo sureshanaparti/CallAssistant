@@ -23,12 +23,11 @@ class AllResource(object):
         self.textLabler = spacy.load('en_core_web_lg')
         print("nlp resource loaded.")
         self.response = None
-        self.meetingDictionary = {'time':None, 'date':None, 'attendees':[], 'host':None, 'webex':None, 'room':None}
         self.teamMembers = {"Hari","Bharat","Suresh","Sadhu","Pavan","Srinivas","Lokesh","Alok","Srikanth","Santosh","Tirumala"}
     
     def addAttendees(self, attendees):
         attendeeList = self.meetingDictionary['attendees']
-        attendeeList.append(attendees)
+        attendeeList.add(attendees)
         self.meetingDictionary['attendees'] = attendeeList
 
     def lableText(self, text):
@@ -36,13 +35,19 @@ class AllResource(object):
         print("token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children]")
         print("%s" % doc)
         idx = 0
+        self.meetingDictionary = {'time':None, 'date':None, 'attendees':set(), 'host':None, 'webex':None, 'room':None}
 
+        meetingDetected = False
+        attendeeList = set()
         for token in doc:
             print(token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children])
-
+            if 'subj' in token.dep_:
+                if token.text in self.teamMembers:
+                    attendeeList.add(token.text)
             if token.text == 'meeting':
                 if token.dep_ == 'dobj':
                     if token.head.pos_ == 'VERB':
+                        meetingDetected = True
                         required_verb = token.head
                         possible_arguments = required_verb.children
                         print ("required verb label  %s" % possible_arguments)
@@ -50,19 +55,21 @@ class AllResource(object):
                         if argument.text == 'at':
                             for timeOrPlace in argument.children:
                                 nameidentity = self.textLabler(timeOrPlace.text + " " + timeOrPlace.text)
-                                for ent in nameidentity.ents:
-                                    if ent.label_ == 'TIME':
-                                        self.meetingDictionary['time'] = timeOrPlace.text
-                                    else:
-                                        self.meetingDictionary['room'] = timeOrPlace.text
-                                        break
+                                if nameidentity is None or nameidentity.ents is None or len(nameidentity.ents) == 0:
+                                    self.meetingDictionary['room'] = timeOrPlace.text
+                                else:
+                                    for ent in nameidentity.ents:
+                                        if ent.label_ == 'TIME':
+                                            self.meetingDictionary['time'] = timeOrPlace.text
+                                        else:
+                                            self.meetingDictionary['room'] = timeOrPlace.text
                         elif argument.text == 'on':
                             for timeOrPlace in argument.children:
                                 nameidentity = self.textLabler(timeOrPlace.text + " " + timeOrPlace.text)
                                 for ent in nameidentity.ents:
                                     if ent.label_ == 'DATE':
-                                         self.meetingDictionary['date'] = timeOrPlace.text
-                                         break
+                                        self.meetingDictionary['date'] = timeOrPlace.text
+                                        break
                         elif argument.text == 'I' or argument.text == 'me' or argument.text == 'us':
                             whosaidthis = required_verb.head
                             print ("whosaidthis %s" %whosaidthis.text)
@@ -73,20 +80,35 @@ class AllResource(object):
                                 if host.text in self.teamMembers:
                                     self.meetingDictionary['host'] = host.text
                                     self.addAttendees(host.text)
+                                    break
+                        elif argument.text in self.teamMembers:
+                            self.meetingDictionary['host'] = argument.text
+                            self.addAttendees(argument.text)
                         else:
                             nameidentity = self.textLabler(argument.text + " " + argument.text)
                             for ent in nameidentity.ents:
                                 if ent.label_ == 'DATE':
-                                    self.meetingDictionary['date'] = argument.text
+                                    if self.meetingDictionary['date'] is None:
+                                        self.meetingDictionary['date'] = argument.text
                                 elif ent.label_ == 'TIME':
-                                    self.meetingDictionary['time'] = argument.text
+                                    if self.meetingDictionary['time'] is None:
+                                        self.meetingDictionary['time'] = argument.text
+                                    else:
+                                        self.meetingDictionary['time'] = self.meetingDictionary['time'] + " " + argument.text
                                 elif ent.label_ == 'PLACE':
-                                    self.meetingDictionary['room'] = argument.text
-        return self.meetingDictionary
+                                    if self.meetingDictionary['room'] is None:
+                                        self.meetingDictionary['room'] = argument.text
+
+        if meetingDetected == True:
+            for attendee in attendeeList:
+                self.addAttendees(attendee)
+        self.meetingDictionary['attendees'] = ",".join(list(self.meetingDictionary['attendees']))
+        return  self.meetingDictionary
+
 
     def on_get(self, req, resp):
         text_param = req.get_param("text")
-        u = unicode(text_param, "utf-8")
+        u = unicode_(text_param, "utf-8")
         result = self.lableText(u) 
         resp.body = json.dumps(result)
         resp.content_type = 'application/json'
