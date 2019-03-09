@@ -32,6 +32,7 @@ class ActionsOrReminders extends React.Component {
   }
 
   render() {
+    const data = this.props.data.filter(data => data.type === 'action');
     return (
       <div>
         <h4>Actions</h4>
