@@ -2,6 +2,8 @@
 
 const request = require("request");
 var require = require("body-parser");
+global.flag = 1;
+global.error ="";
 
 
 global.resResult = "Test-String";
@@ -72,7 +74,7 @@ exports.create_a_task = function(req, res) {
         if(words.length>1) {
             for(var i =0;i<words.length;i++){
                 if( words[i] !== undefined && words[i] !== null ){
-                    var val = global.userHashSerach(words[i])
+                    var val = global.userHashSerach(words[i].toLowerCase())
                     if( val && i==0){
                         console.log("setting caller1---");
                         global.caller1name = val.name;
@@ -105,7 +107,7 @@ exports.create_a_task = function(req, res) {
     
      //set the params 
     if( req.body.location !== undefined && req.body.location !== null ){
-        var val2 = global.locationHashSerach(req.body.location.toString())
+        var val2 = global.locationHashSerach(req.body.location.toString().toLowerCase())
         if( val2){
             console.log("setting location---");
             global.location = val2.name.toString();;
@@ -165,16 +167,25 @@ exports.create_a_task = function(req, res) {
   request(options_createEvent, function (error, response, body) {
       console.log("inside post fire ");
   if (error) {
-      global.log_event(global.jobid, "error", error);
+      global.flag = 0;
       throw new Error(error);
   }
 
-  console.log(body);
+      
       resResult = body;
       console.log("inside post fire2 ");
       console.log(resResult);
+      
 });
-    global.log_event(global.jobid, "log", 'Meeting created for attendees ['+options_createEvent.body.attendees["0"].emailAddress.address+','+options_createEvent.body.attendees["1"].emailAddress.address+']'+' Organizer : [pavankumar_a@persistent.co.in]'+ ' Location: ['+options_createEvent.body.location.displayName+']' + 'start time : ['+options_createEvent.body.start.dateTime+']'+ ' end time : ['+options_createEvent.body.end.dateTime + ']'+'Agenda :['+options_createEvent.body.subject+']');
+   
+    if(global.falg == 1) {
+        global.log_event(global.jobid, "log", 'Meeting created for attendees ['+options_createEvent.body.attendees["0"].emailAddress.address+','+options_createEvent.body.attendees["1"].emailAddress.address+']'+' Organizer : [pavankumar_a@persistent.co.in]'+ ' Location: ['+options_createEvent.body.location.displayName+']' + 'start time : ['+options_createEvent.body.start.dateTime+']'+ ' end time : ['+options_createEvent.body.end.dateTime + ']'+'Agenda :['+options_createEvent.body.subject+']');
+        global.flag = 0;
+    } else {
+        global.log_event(global.jobid, "error", "OutLook API :- Access token has expired, Please reach out Admin for renewal");
+        global.flag = 1;
+        
+    }
 
     
     res.json(resResult);
@@ -270,6 +281,8 @@ global.locationHashSerach = function(location2)   {
 let anchor_url="http://localhost:3000/notifyEvent"
 
 global.log_event = function(jobid, type, message) {
+    console.log("Function called ---->",log_event);
+    console.log("Message passed ---->",message.message);
 
 var req_body={ "job_id" : jobid, "type" : type, "source" : "action_handler", "message" : message }
  console.log("Executing log_event");
