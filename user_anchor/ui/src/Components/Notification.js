@@ -34,7 +34,7 @@ class Notification extends React.Component {
               <Card>
                 <Card.Header>{prop.source}</Card.Header>
                 <Card.Body>
-                  {prop.message}
+                  {typeof prop.message === 'object' ? JSON.stringify(prop.message) : prop.message}
                 </Card.Body>
               </Card>
             </ListGroup.Item>);

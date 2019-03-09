@@ -38,7 +38,7 @@ class ActionsOrReminders extends React.Component {
           {data.map((prop, index) => {
             console.log('action', prop);
             return (<ListGroup.Item variant="primary" key={`${index}`}>
-              <Linkify>{prop.message}</Linkify>
+              <Linkify>{typeof prop.message === 'object' ? JSON.stringify(prop.message) : prop.message}</Linkify>
               {(prop.action === 'url' || prop.action === 'meeting') && <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow.bind(this, prop)}>
                 view
               </Button> }

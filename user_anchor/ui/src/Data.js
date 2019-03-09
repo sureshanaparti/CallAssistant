@@ -1,6 +1,9 @@
 const data = [
   {
-    message: 'hello 1',
+    message: {
+      'help': 'po',
+      po: 'asd'
+    },
     type: 'action'
   },{
     message: 'hello 2',
