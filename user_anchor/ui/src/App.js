@@ -59,7 +59,7 @@ class App extends React.Component {
     return (
       <Fragment>
         <header>
-          <strong>Bittu</strong>
+          <strong>Akṣī</strong>
           <button type="button" className='openbtn' onClick={this.showNotificationPane}>&#9776;</button>
         </header>
         <section id='section'>
