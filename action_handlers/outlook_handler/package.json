@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "hashmap": "^2.3.0"
+    "hashmap": "^2.3.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {},
   "scripts": {
