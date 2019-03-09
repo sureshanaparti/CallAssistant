@@ -8,7 +8,9 @@ const ActionModal = ({modalData, handleClose}) => {
         <Modal.Title>{modalData.message}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      {modalData.action === 'url' ? <iframe src={modalData.url}>
+      {modalData.action === 'url' ? <iframe src={modalData.url} style={{
+        width: '100%'
+      }}>
         <p>Your browser does not support iframes.</p>
       </iframe> : null}
       </Modal.Body>
