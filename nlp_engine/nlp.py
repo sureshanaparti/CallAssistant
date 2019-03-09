@@ -79,6 +79,8 @@ class AllResource(object):
         r = requests.get("http://localhost:9000/action?jobid=%s&text=%s"%(jobid,self.response['resolved']))
         self.notifier.notify(jobid,"log", "transcript analysis received: %s" %r.text)
         print("json response%s" %r.text)
+        self.notifier.notify(jobid, "log", "Sending action notification")
+        self.notifier.notifyAction(jobid, r.text)
         resp.body = r.text
         resp.content_type = 'application/json'
         resp.append_header('Access-Control-Allow-Origin', "*")
