@@ -98,14 +98,14 @@ class AllResource(object):
         return d + datetime.timedelta(days_ahead)   #2019-03-15T12:00:00   #2019-03-15T12:00:00
 
 
-    def lableText(self, text, jobid):
+    def lableText(self, text, jobid, caller, callee):
         self.actionList = []
         doc = self.textLabler(text)
         print("token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children]")
         print("%s" % doc)
         idx = 0
-        self.meetingDictionary = {'action':'meeting', 'time':None, 'date':None, 'attendees':set(), 'host':None, 'webex':None, 'location':None}
-        self.ticketDictionary = {'action':'jiraBug', 'id':set()}
+        self.meetingDictionary = {"action":"meeting", "time":None, "date":None, "attendees":set(), "host":None, "webex":None, "location":None}
+        self.ticketDictionary = {"action":"jiraBug", "id":set()}
 
         meetingDetected = False
         ticketDetected = False
@@ -134,21 +134,25 @@ class AllResource(object):
                     for argument in possible_arguments:
                         if argument.text == 'at':
                             for timeOrPlace in argument.children:
+                                if timeOrPlace.text == 'a.m.' or timeOrPlace.text == 'p.m.':
+                                   for time in timeOrPlace.children:
+                                       self.meetingDictionary['time'] = time.text + " " + timeOrPlace.text
+                                       break
+                                break
                                 nameidentity = self.textLabler(timeOrPlace.text + " " + timeOrPlace.text)
                                 if nameidentity is None or nameidentity.ents is None or len(nameidentity.ents) == 0:
-                                    self.meetingDictionary['location'] = timeOrPlace.text
+                                    self.meetingDictionary["location"] = timeOrPlace.text
                                 else:
                                     for ent in nameidentity.ents:
                                         if ent.label_ == 'TIME':
-                                            self.meetingDictionary['time'] = timeOrPlace.text
+                                            self.meetingDictionary["time"] = timeOrPlace.text
                                         else:
-                                            self.meetingDictionary['location'] = timeOrPlace.text
+                                            self.meetingDictionary["location"] = timeOrPlace.text
                         elif argument.text == 'on':
-                            for timeOrPlace in argument.children:
                                 nameidentity = self.textLabler(timeOrPlace.text + " " + timeOrPlace.text)
                                 for ent in nameidentity.ents:
                                     if ent.label_ == 'DATE':
-                                        self.meetingDictionary['date'] = timeOrPlace.text
+                                        self.meetingDictionary["date"] = timeOrPlace.text
                                         break
                         elif argument.text == 'I' or argument.text == 'me' or argument.text == 'us':
                             whosaidthis = required_verb.head
@@ -158,58 +162,61 @@ class AllResource(object):
                             for host in whosaidthis.children:
                                 print ("whosaidthis children %s" %host.text)
                                 if host.text in self.teamMembers:
-                                    self.meetingDictionary['host'] = host.text
+                                    self.meetingDictionary["host"] = host.text
                                     self.addAttendees(host.text)
                                     break
                         elif argument.text in self.teamMembers:
-                            self.meetingDictionary['host'] = argument.text
+                            self.meetingDictionary["host"] = argument.text
                             self.addAttendees(argument.text)
                         else:
                             nameidentity = self.textLabler(argument.text + " " + argument.text)
                             for ent in nameidentity.ents:
                                 if ent.label_ == 'DATE':
-                                    if self.meetingDictionary['date'] is None:
-                                        self.meetingDictionary['date'] = argument.text
+                                    if self.meetingDictionary["date"] is None:
+                                        self.meetingDictionary["date"] = argument.text
                                 elif ent.label_ == 'TIME':
-                                    if self.meetingDictionary['time'] is None:
-                                        self.meetingDictionary['time'] = argument.text
+                                    if self.meetingDictionary["time"] is None:
+                                        self.meetingDictionary["time"] = argument.text
                                     else:
-                                        self.meetingDictionary['time'] = self.meetingDictionary['time'] + " " + argument.text
+                                        self.meetingDictionary["time"] = self.meetingDictionary["time"] + " " + argument.text
                                 elif ent.label_ == 'PLACE':
-                                    if self.meetingDictionary['location'] is None:
-                                        self.meetingDictionary['location'] = argument.text
+                                    if self.meetingDictionary["location"] is None:
+                                        self.meetingDictionary["location"] = argument.text
 
         if meetingDetected == True:
             self.notifier.notify(jobid, "log", "Meeting context detected")
             for attendee in attendeeList:
                 self.addAttendees(attendee)
-            self.meetingDictionary['attendees'] = ",".join(list(self.meetingDictionary['attendees']))
-            self.meetingDictionary['jobid'] = jobid
+            self.meetingDictionary["attendees"] = ",".join(list(self.meetingDictionary['attendees']))
+            self.meetingDictionary["jobid"] = jobid
+            self.meetingDictionary["subject"] = "Scheduled meeting based on call from %s to %s" %(caller, callee)            
 
-            if self.meetingDictionary['date'] == None:
-                self.meetingDictionary['date'] = 'wednesday'
-            if self.meetingDictionary['time'] == None:
-                self.meetingDictionary['time'] = '3PM'
+            if self.meetingDictionary["date"] == None:
+                self.meetingDictionary["date"] = 'wednesday'
+            if self.meetingDictionary["time"] == None:
+                self.meetingDictionary["time"] = "3:00 p.m."
 
-            self.meetingDictionary['starttime'] = self.find_date(self.meetingDictionary['date']).strftime("%Y-%m-%dT")+self.timeconvert(self.meetingDictionary['time'])
+            self.meetingDictionary["starttime"] = self.find_date(self.meetingDictionary["date"]).strftime("%Y-%m-%dT")+self.timeconvert(self.meetingDictionary['time'])
             self.notifier.notify(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
             self.actionList.append(self.meetingDictionary)
 
         for ticket in ticketList:
             self.addTicket(ticket)
 
-        if len(self.ticketDictionary['id']) != 0:
-            self.ticketDictionary['jobid'] = jobid
-            self.ticketDictionary['id'] = ",".join(list(self.ticketDictionary['id']))
+        if len(self.ticketDictionary["id"]) != 0:
+            self.ticketDictionary["jobid"] = jobid
+            self.ticketDictionary["id"] = ",".join(list(self.ticketDictionary["id"]))
             self.actionList.append(self.ticketDictionary)
         return self.actionList
 
 
     def on_get(self, req, resp):
         text_param = req.get_param("text")
+        caller = req.get_param("caller")
+        callee = req.get_param("callee")
         jobid = req.get_param("jobid")
         u = unicode_(text_param, "utf-8")
-        result = self.lableText(u,jobid) 
+        result = self.lableText(u,jobid, caller, callee) 
         resp.body = json.dumps(result)
         resp.content_type = 'application/json'
         resp.append_header('Access-Control-Allow-Origin', "*")
