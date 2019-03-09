@@ -32,6 +32,11 @@ class AllResource(object):
         attendeeList.add(attendees)
         self.meetingDictionary['attendees'] = attendeeList
 
+    def addTicket(self, ticket):
+        ticketList = self.ticketDictionary['id']
+        ticketList.add('CS-' + ticket)
+        self.ticketDictionary['id'] = ticketList
+
     def lableText(self, text, jobid):
         self.actionList = []
         doc = self.textLabler(text)
@@ -39,11 +44,22 @@ class AllResource(object):
         print("%s" % doc)
         idx = 0
         self.meetingDictionary = {'action':'meeting', 'time':None, 'date':None, 'attendees':set(), 'host':None, 'webex':None, 'location':None}
+        self.ticketDictionary = {'action':'jiraBug', 'id':set()}
 
         meetingDetected = False
+        ticketDetected = False
         attendeeList = set()
+        ticketList = set()
         for token in doc:
             print(token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children])
+
+            if token.text == 'ticket':
+                ticketDetected = True
+            if ticketDetected == True:
+                if token.is_digit:
+                    ticketList.add(token.text)
+                    ticketDetected = False
+
             if 'subj' in token.dep_:
                 if token.text in self.teamMembers:
                     attendeeList.add(token.text)
@@ -110,9 +126,14 @@ class AllResource(object):
             self.meetingDictionary['jobid'] = jobid
             self.notifier.notify(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
             self.actionList.append(self.meetingDictionary)
-        testDict={'jobid':1234, 'type':'jiraBug', 'tickets':'CS-4456 CS-5566'}
-        self.actionList.append(testDict)
-        return  self.actionList
+
+        for ticket in ticketList:
+            self.addTicket(ticket)
+
+        if len(self.ticketDictionary['id']) != 0:
+            self.ticketDictionary['jobid'] = jobid
+            self.actionList.append(self.ticketDictionary)
+        return self.actionList
 
 
     def on_get(self, req, resp):

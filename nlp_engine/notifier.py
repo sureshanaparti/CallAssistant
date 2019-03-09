@@ -20,7 +20,7 @@ class notifier():
         self.data['type'] = tp
         if service is None:
            service = self.service 
-        self.data['service'] = service
+        self.data['source'] = service
         self.data['message'] = message
         print("logging message %s" % (json.dumps(self.data)))
         custom = {'content-type': 'application/json'}
