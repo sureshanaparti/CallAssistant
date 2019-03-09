@@ -29,6 +29,7 @@ class Notification extends React.Component {
         <h4>Notification</h4>
         <ListGroup>
           {this.props.data.map((prop, index) => {
+            console.log('notifictaion', prop);
             return (<ListGroup.Item key={`${index}`} variant={prop.variant}>
               <Card>
                 <Card.Header>{prop.source}</Card.Header>

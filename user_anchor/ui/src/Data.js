@@ -15,7 +15,9 @@ const data = [
     source: 'action_handler'
   },{
     message: 'hello 5',
-    type: 'action'
+    type: 'action',
+    action: 'url',
+    url: 'https://facebook.com'
   },{
     message: 'hello 6',
     type: 'log',

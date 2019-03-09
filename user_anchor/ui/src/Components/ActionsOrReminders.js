@@ -29,10 +29,6 @@ class ActionsOrReminders extends React.Component {
     this.modalData = prop;
   }
 
-  componentWillReceiveProps() {
-
-  }
-
   render() {
     const data = this.props.data.filter(data => data.type === 'action');
     return (
@@ -40,6 +36,7 @@ class ActionsOrReminders extends React.Component {
         <h4>Actions</h4>
         <ListGroup variant='flush'>
           {data.map((prop, index) => {
+            console.log('action', prop);
             return (<ListGroup.Item variant="primary" key={`${index}`}>
               <Linkify>{prop.message}</Linkify>
               {(prop.action === 'url' || prop.action === 'meeting') && <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow.bind(this, prop)}>

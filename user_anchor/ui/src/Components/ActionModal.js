@@ -7,15 +7,11 @@ const ActionModal = ({modalData, handleClose}) => {
       <Modal.Header closeButton>
         <Modal.Title>{modalData.message}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{modalData.message}</Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleClose}>
-          Save Changes
-        </Button>
-      </Modal.Footer>
+      <Modal.Body>
+      {modalData.action === 'url' ? <iframe src={modalData.url}>
+        <p>Your browser does not support iframes.</p>
+      </iframe> : null}
+      </Modal.Body>
     </Modal>
   );
 }
