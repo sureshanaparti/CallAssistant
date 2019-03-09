@@ -28,6 +28,7 @@
     "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-dom": "^16.8.4",
+    "react-linkify": "^0.2.2",
     "react-websocket": "^2.0.1"
   }
 }

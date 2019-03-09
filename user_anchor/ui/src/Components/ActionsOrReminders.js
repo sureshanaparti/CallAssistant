@@ -2,6 +2,7 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import ActionModal from './ActionModal';
+import Linkify from 'react-linkify'
 
 class ActionsOrReminders extends React.Component {
   constructor(props) {
@@ -40,10 +41,10 @@ class ActionsOrReminders extends React.Component {
         <ListGroup variant='flush'>
           {data.map((prop, index) => {
             return (<ListGroup.Item variant="primary" key={`${index}`}>
-              {prop.message}
-              <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow.bind(this, prop)}>
-              view
-              </Button>
+              <Linkify>{prop.message}</Linkify>
+              {(prop.action === 'url' || prop.action === 'meeting') && <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow.bind(this, prop)}>
+                view
+              </Button> }
               {this.state.show && <ActionModal modalData={this.modalData} handleClose={this.handleClose}/>}
             </ListGroup.Item>);
           })}

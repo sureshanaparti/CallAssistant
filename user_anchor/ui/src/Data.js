@@ -7,7 +7,7 @@ const data = [
     type: 'error',
     source: 'nlp'
   },{
-    message: 'hello 3',
+    message: 'hello 3 this contains url https://facebook.com',
     type: 'action'
   },{
     message: 'hello 4',

@@ -54,6 +54,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { data } = this.state;
+
     return (
       <Fragment>
         <header>
@@ -62,10 +64,10 @@ class App extends React.Component {
         </header>
         <section id='section'>
           <div className='sidebar'  ref={this.sideBar} style={{width: '30%'}}>
-            <Notification data={ this.state.data }/>
+            <Notification data={ data }/>
           </div>
           <div id='main' ref={this.main} style={{marginRight: '30%'}}>
-            <ActionsOrReminders data={ this.state.data }/>
+            <ActionsOrReminders data={ data }/>
           </div>
         </section>
         <Websocket url='ws://localhost:3000'
