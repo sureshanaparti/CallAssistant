@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bittu</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <style>
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      right: 0%;
+      background-color: #f1eded;
+      overflow-x: hidden;
+      padding-top: 20px;
+      transition: 0.5s;
+      }
+
+      #main {
+        transition: margin-left .5s;
+        padding: 20px;
+      }
+
+      header {
+        top: 0;
+        height: 20%;
+        background-color: #111;
+        padding: 10px 15px;
+      }
+
+      header strong {
+        width: 80%;
+        color: aliceblue;
+        font-size: 20px;
+      }
+
+      header button {
+        float: right;
+      }
+
+      #section {
+        top: 20%
+      }
+
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #111;
+        color: white;
+        border: none;
+      }
+
+      .openbtn:hover {
+        background-color: #444;
+      }
+
+      @media screen and (max-height: 450px) {
+        .sidebar {padding-top: 15px;}
+      }
+
+      .list-group-item {
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="index"></section>
+  </body>
+</html>
