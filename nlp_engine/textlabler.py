@@ -37,7 +37,7 @@ class AllResource(object):
         print("token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children]")
         print("%s" % doc)
         idx = 0
-        self.meetingDictionary = {'time':None, 'date':None, 'attendees':set(), 'host':None, 'webex':None, 'room':None}
+        self.meetingDictionary = {'action':'meeting', 'time':None, 'date':None, 'attendees':set(), 'host':None, 'webex':None, 'room':None}
 
         meetingDetected = False
         attendeeList = set()
