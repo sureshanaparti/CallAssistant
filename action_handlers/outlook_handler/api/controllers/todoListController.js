@@ -7,16 +7,16 @@ global.error ="";
 
 
 global.resResult = "Test-String";
-global.caller1name= "Pavan Kumar Aravapalli";
-global.caller1email = "pavankumar_a@persistent.co.in";
-global.caller2name= "Suresh Sadhu";
-global.caller2email = "suresh.sadhu@persistent.co.in";
+global.caller1name= "Bharath Kumar";
+global.caller1email = "bharat.kumar@persistent.co.in";
+global.caller2name= "HariKrishna Patnala";
+global.caller2email = "harikrishna.patnala@persistent.co.in";
 global.location = 'Hyd-WaveRock-11th Floor Paramahamsa (Projector)';
-global.starttime = "2019-03-15T12:00:00";
-global.endtime = "2019-03-15T14:00:00";
+global.starttime = "2019-03-11T12:00:00";
+global.endtime = "2019-03-11T11:00:00";
 global.subject = "Meeting Created as per the transcirptit :- 7eb361fc-4274-11e9-b210-d663bd873d93";
 global.jobid="7eb361fc-4274-11e9-b210-d663bd873d93";
-global.attendeeslist="pavan,suresh";
+global.attendeeslist="bharat,hari";
 
 
 
@@ -40,7 +40,7 @@ global.locatinHash['nirvana'] = {name:'Hyd-WaveRock-11th Floor Nirvana (Projecto
 global.locatinHash['kena'] = {name:'Hyd-WaveRock-11th Floor Kena'};
 
 
-global.token="Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFDRWZleFh4amFtUWIzT2VHUTRHdWd2eWdlYVhwRUVaNVIxa2Y3Xzh6T1hxSWdhcWI1cm54d1hFSmllTlZVYnFPRFdHelQ4bEcyY2VPcWJkQzFvMTEwZDlBendMbm9lYUhoQ3RVaGFNWXVmY1NBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIiwia2lkIjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xZjRiZWFjZC1iN2FhLTQ5YjItYWFhMS1iODUyNWNiMjU3ZTAvIiwiaWF0IjoxNTUyMTU2MjM5LCJuYmYiOjE1NTIxNTYyMzksImV4cCI6MTU1MjE2MDEzOSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IjQySmdZRGdjeFd1Ly9PQlZNNGRmUVFuVEdLYjRKdC9XVHZuKzkvVTc2eEwxQ3c5U1BPTUIiLCJhbXIiOlsicHdkIl0sImFwcF9kaXNwbGF5bmFtZSI6ImJpdHR1YXBwIiwiYXBwaWQiOiJhZDRjZjQ0Zi1mNGMwLTQyMDMtODI3OS00M2JkNzAwZjk1ZTMiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkFyYXZhcGFsbGkiLCJnaXZlbl9uYW1lIjoiUGF2YW4gS3VtYXIiLCJpcGFkZHIiOiIxMTUuMTE0LjkzLjY3IiwibmFtZSI6IlBhdmFuIEt1bWFyIEFyYXZhcGFsbGkiLCJvaWQiOiIzYTA0M2NlZi1lMGIyLTQ4OTQtYmQ4ZS01NWU1YWEzZDFlNWUiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMjAwMDQ3ODM1NC0yOTk1MDIyNjctNzI1MzQ1NTQzLTE5MTIyMCIsInBsYXRmIjoiNSIsInB1aWQiOiIxMDAzN0ZGRTlEMjlEQzJFIiwic2NwIjoiQ2FsZW5kYXJzLlJlYWQgQ2FsZW5kYXJzLlJlYWQuU2hhcmVkIENhbGVuZGFycy5SZWFkV3JpdGUgQ2FsZW5kYXJzLlJlYWRXcml0ZS5TaGFyZWQgQ29udGFjdHMuUmVhZCBNYWlsLlJlYWQgb3BlbmlkIHByb2ZpbGUgVXNlci5SZWFkIGVtYWlsIiwic2lnbmluX3N0YXRlIjpbImlua25vd25udHdrIiwia21zaSJdLCJzdWIiOiJqbDFLUnlTOFBJUmdJTGxBOVJZdUtCQXNGNkpJcHktYVQ3U2p2d29nTW9ZIiwidGlkIjoiMWY0YmVhY2QtYjdhYS00OWIyLWFhYTEtYjg1MjVjYjI1N2UwIiwidW5pcXVlX25hbWUiOiJwYXZhbmt1bWFyX2FAcGVyc2lzdGVudC5jby5pbiIsInVwbiI6InBhdmFua3VtYXJfYUBwZXJzaXN0ZW50LmNvLmluIiwidXRpIjoibHVCWjJDQlhyay1qNlJJQW0yaGFBQSIsInZlciI6IjEuMCIsInhtc19zdCI6eyJzdWIiOiJGYlI0SzA1dXRPT0VTd0NYUy02NkJodW1iaWx2WkZXMGNtM0hHQ1BDT2x3In0sInhtc190Y2R0IjoxMzcwNTkyNTY0fQ.WfY8vsu_uFdZZt7Qbgy6vExUPziGxjUYwnAut7AZMopxHDeHgc0JO3J5Q7GnFZqB4l-y0bk-3MZ0yJZQ2Z-mZ_3oY3Vqyde5z9fHf1P5D6HiCo9FLj8WKjIu5LYmRNGU1XFkV4Kxv50XSLD1zzhHV6NMCYfYFue1PlMWVgx2E7nb3XyJEx0xqi26EYCacSudwhB5r6sDkCcfR9Sryv8wU6ZcEJpKC89DOhTfYbwG9wn1VlJOPbqWMO8_sK8OK2zA6f7hEKSo6mIBXIHiEMDSbHO6XtD9X-HqmMO8wXoUNsGTWVPHhp66g0gkOZN6jTtIppyBayuRPFTkaWyavYeDSw";
+global.token="Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFDRWZleFh4amFtUWIzT2VHUTRHdWd2ZUVVWGZLamlHYmliQ2dVeWV3XzZhMXJRREpBcFJSVUp0LUNqbGpIcXJId1Q4bGRRRUVpaEg4alNzb1ltTFhrLVhHNS1zOUZMZFA5NlVNckFZbGtMUUNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIiwia2lkIjoiTi1sQzBuLTlEQUxxd2h1SFluSFE2M0dlQ1hjIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8xZjRiZWFjZC1iN2FhLTQ5YjItYWFhMS1iODUyNWNiMjU3ZTAvIiwiaWF0IjoxNTUyMTczNzE5LCJuYmYiOjE1NTIxNzM3MTksImV4cCI6MTU1MjE3NzYxOSwiYWNjdCI6MCwiYWNyIjoiMSIsImFpbyI6IkFTUUEyLzhLQUFBQWJPWUU2ditzbnBFTVI2N2w0ZWtYZEdjNVdtMDVQL3JaSm1lRUFvYkQrNlE9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJiaXR0dWFwcCIsImFwcGlkIjoiYWQ0Y2Y0NGYtZjRjMC00MjAzLTgyNzktNDNiZDcwMGY5NWUzIiwiYXBwaWRhY3IiOiIxIiwiZmFtaWx5X25hbWUiOiJBcmF2YXBhbGxpIiwiZ2l2ZW5fbmFtZSI6IlBhdmFuIEt1bWFyIiwiaXBhZGRyIjoiMTE1LjExNC45My42NyIsIm5hbWUiOiJQYXZhbiBLdW1hciBBcmF2YXBhbGxpIiwib2lkIjoiM2EwNDNjZWYtZTBiMi00ODk0LWJkOGUtNTVlNWFhM2QxZTVlIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIwMDA0NzgzNTQtMjk5NTAyMjY3LTcyNTM0NTU0My0xOTEyMjAiLCJwbGF0ZiI6IjUiLCJwdWlkIjoiMTAwMzdGRkU5RDI5REMyRSIsInNjcCI6IkNhbGVuZGFycy5SZWFkIENhbGVuZGFycy5SZWFkLlNoYXJlZCBDYWxlbmRhcnMuUmVhZFdyaXRlIENhbGVuZGFycy5SZWFkV3JpdGUuU2hhcmVkIENvbnRhY3RzLlJlYWQgTWFpbC5SZWFkIG9wZW5pZCBwcm9maWxlIFVzZXIuUmVhZCBlbWFpbCIsInNpZ25pbl9zdGF0ZSI6WyJpbmtub3dubnR3ayIsImttc2kiXSwic3ViIjoiamwxS1J5UzhQSVJnSUxsQTlSWXVLQkFzRjZKSXB5LWFUN1NqdndvZ01vWSIsInRpZCI6IjFmNGJlYWNkLWI3YWEtNDliMi1hYWExLWI4NTI1Y2IyNTdlMCIsInVuaXF1ZV9uYW1lIjoicGF2YW5rdW1hcl9hQHBlcnNpc3RlbnQuY28uaW4iLCJ1cG4iOiJwYXZhbmt1bWFyX2FAcGVyc2lzdGVudC5jby5pbiIsInV0aSI6IlJQdDhoQ2xCcmtTMXgzRG1sVFJoQUEiLCJ2ZXIiOiIxLjAiLCJ4bXNfc3QiOnsic3ViIjoiRmJSNEswNXV0T09FU3dDWFMtNjZCaHVtYmlsdlpGVzBjbTNIR0NQQ09sdyJ9LCJ4bXNfdGNkdCI6MTM3MDU5MjU2NH0.oV9igIyXvegglvER5ZNMpReZUndHTNoGKMT6u_V6EgzcFGBDZefX6TJn8mUyYlPdRKsjPHxhcU0BuqDCjZBY4sOredD7u2yO6KaorkEReVLZ7CsiVGhaHC_qyXnzUIow35iJzZLKOtpRv5ZJTY7wTQ5D7BnZev3fGhsxwinOiWDGGPBLwBRukKt29CPpvMgJvvyf3kTFrwLHz1lf76BAjtbYHSN2jmtgqN8hltHtuLD84lNohMv85cRTFWoHS3K2yzJnJoHQZN5Ew2XWGlptu6dN_GePDHoG8pnrxBJV1PLGTCXy2fd9SFFZ_YgJsQPi_3i4Nr1ljCHT3mL2DQovjQ";
 
 //var mongoose = require('mongoose'),
   //Task = mongoose.model('Tasks');
@@ -178,14 +178,14 @@ exports.create_a_task = function(req, res) {
       
 });
    
-    if(global.falg == 1) {
+    //if(global.falg == 1) {
         global.log_event(global.jobid, "log", 'Meeting created for attendees ['+options_createEvent.body.attendees["0"].emailAddress.address+','+options_createEvent.body.attendees["1"].emailAddress.address+']'+' Organizer : [pavankumar_a@persistent.co.in]'+ ' Location: ['+options_createEvent.body.location.displayName+']' + 'start time : ['+options_createEvent.body.start.dateTime+']'+ ' end time : ['+options_createEvent.body.end.dateTime + ']'+'Agenda :['+options_createEvent.body.subject+']');
         global.flag = 0;
-    } else {
+   /* } else {
         global.log_event(global.jobid, "error", "OutLook API :- Access token has expired, Please reach out Admin for renewal");
         global.flag = 1;
         
-    }
+    }*/
 
     
     res.json(resResult);
