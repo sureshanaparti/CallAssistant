@@ -76,7 +76,7 @@ class AllResource(object):
         #resp.append_header('Access-Control-Allow-Origin', "*")
         #resp.status = falcon.HTTP_200
         self.logger.log(jobid, "log", "analyzing transcript")
-        r = requests.get("http://localhost:9000/action?text=%s"%self.response['resolved'])      
+        r = requests.get("http://localhost:9000/action?jobid=%s&text=%s"%(jobid,self.response['resolved']))
         self.logger.log(jobid,"log", "transcript analysis received: %s" %r.text)
         print("json response%s" %r.text)
         resp.body = r.text
