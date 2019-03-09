@@ -37,7 +37,7 @@ class AllResource(object):
         print("token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children]")
         print("%s" % doc)
         idx = 0
-        self.meetingDictionary = {'action':'meeting', 'time':None, 'date':None, 'attendees':set(), 'host':None, 'webex':None, 'room':None}
+        self.meetingDictionary = {'action':'meeting', 'time':None, 'date':None, 'attendees':set(), 'host':None, 'webex':None, 'location':None}
 
         meetingDetected = False
         attendeeList = set()
@@ -58,13 +58,13 @@ class AllResource(object):
                             for timeOrPlace in argument.children:
                                 nameidentity = self.textLabler(timeOrPlace.text + " " + timeOrPlace.text)
                                 if nameidentity is None or nameidentity.ents is None or len(nameidentity.ents) == 0:
-                                    self.meetingDictionary['room'] = timeOrPlace.text
+                                    self.meetingDictionary['location'] = timeOrPlace.text
                                 else:
                                     for ent in nameidentity.ents:
                                         if ent.label_ == 'TIME':
                                             self.meetingDictionary['time'] = timeOrPlace.text
                                         else:
-                                            self.meetingDictionary['room'] = timeOrPlace.text
+                                            self.meetingDictionary['location'] = timeOrPlace.text
                         elif argument.text == 'on':
                             for timeOrPlace in argument.children:
                                 nameidentity = self.textLabler(timeOrPlace.text + " " + timeOrPlace.text)
@@ -98,8 +98,8 @@ class AllResource(object):
                                     else:
                                         self.meetingDictionary['time'] = self.meetingDictionary['time'] + " " + argument.text
                                 elif ent.label_ == 'PLACE':
-                                    if self.meetingDictionary['room'] is None:
-                                        self.meetingDictionary['room'] = argument.text
+                                    if self.meetingDictionary['location'] is None:
+                                        self.meetingDictionary['location'] = argument.text
 
         if meetingDetected == True:
             self.notifier.notify(jobid, "log", "Meeting context detected")
