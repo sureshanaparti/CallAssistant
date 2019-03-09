@@ -8,7 +8,7 @@ from wsgiref.simple_server import make_server
 import falcon
 import spacy
 import os
-from logger import logger
+from notifier import notifier
 
 #os.sys.path.append('/home/semicolon/coref/bin')
 
@@ -24,7 +24,7 @@ class AllResource(object):
         self.textLabler = spacy.load('en_core_web_lg')
         print("nlp resource loaded.")
         self.response = None
-        self.logger = logger("Analyser")
+        self.notifier = notifier("Analyser")
         self.teamMembers = {"Hari","Bharat","Suresh","Sadhu","Pavan","Srinivas","Lokesh","Alok","Srikanth","Santosh","Tirumala"}
     
     def addAttendees(self, attendees):
@@ -102,11 +102,11 @@ class AllResource(object):
                                         self.meetingDictionary['room'] = argument.text
 
         if meetingDetected == True:
-            self.logger.log(jobid, "log", "Meeting context detected")
+            self.notifier.notify(jobid, "log", "Meeting context detected")
             for attendee in attendeeList:
                 self.addAttendees(attendee)
         self.meetingDictionary['attendees'] = ",".join(list(self.meetingDictionary['attendees']))
-        self.logger.log(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
+        self.notifier.notify(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
         return  self.meetingDictionary
 
 

@@ -1,7 +1,7 @@
 import requests
 import json
 
-class logger():
+class notifier():
 
     def __init__(self, service):
         self.logger_ip="10.233.88.74"
@@ -12,7 +12,7 @@ class logger():
         self.service = service
 
 
-    def log(self, jobId, tp, message,service=None):
+    def notify(self, jobId, tp, message,service=None):
         if self.logger_ip is None:
            return
         self.data = {}

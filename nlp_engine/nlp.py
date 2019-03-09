@@ -9,7 +9,7 @@ import falcon
 import spacy
 import requests
 import os
-from logger import logger
+from notifier import notifier
 
 #os.sys.path.append('/home/semicolon/coref/bin')
 
@@ -25,7 +25,7 @@ class AllResource(object):
         self.nlp = spacy.load('en_coref_lg')
         print("nlp resource loaded.")
         self.response = None
-        self.logger = logger("nlp") 
+        self.notifier = notifier("nlp") 
         self.meetingDictionary = {'time':None, 'date':None, 'attendees':[], 'host':None, 'webex':None, 'room':None}
         self.teamMembers = {"Hari","Bharat","Suresh","Sadhu","Pavan","Srinivas","Lokesh","Alok","Srikanth","Santosh","Tirumala"}
 
@@ -44,7 +44,7 @@ class AllResource(object):
 
         message = "Received input text: %s" %(text_param)
         print("%s" %message)
-        self.logger.log(jobid,"log",message)
+        self.notifier.notify(jobid,"log",message)
 
         if text_param is not None:
             #text = ",".join(text_param) if isinstance(text_param, list) else text_param
@@ -64,10 +64,10 @@ class AllResource(object):
                 self.response['mentions'] = mentions
                 self.response['clusters'] = clusters
                 self.response['resolved'] = resolved
-                self.logger.log(jobid, "log", "corefernced text:%s" % resolved)
+                self.notifier.notify(jobid, "log", "corefernced text:%s" % resolved)
             else:
                 print("###found no corefs sending original text")
-                self.logger.log(jobid, "log", "###found no corefs sending original text")
+                self.notifier.notify(jobid, "log", "###found no corefs sending original text")
                 self.response['resolved'] = text_param
 
         print("response = %s" % self.response['resolved'])
@@ -75,9 +75,9 @@ class AllResource(object):
         #resp.content_type = 'application/json'
         #resp.append_header('Access-Control-Allow-Origin', "*")
         #resp.status = falcon.HTTP_200
-        self.logger.log(jobid, "log", "analyzing transcript")
+        self.notifier.notify(jobid, "log", "analyzing transcript")
         r = requests.get("http://localhost:9000/action?jobid=%s&text=%s"%(jobid,self.response['resolved']))
-        self.logger.log(jobid,"log", "transcript analysis received: %s" %r.text)
+        self.notifier.notify(jobid,"log", "transcript analysis received: %s" %r.text)
         print("json response%s" %r.text)
         resp.body = r.text
         resp.content_type = 'application/json'
