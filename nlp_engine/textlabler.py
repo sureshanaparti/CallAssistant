@@ -33,6 +33,7 @@ class AllResource(object):
         self.meetingDictionary['attendees'] = attendeeList
 
     def lableText(self, text, jobid):
+        self.actionList = []
         doc = self.textLabler(text)
         print("token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children]")
         print("%s" % doc)
@@ -105,9 +106,13 @@ class AllResource(object):
             self.notifier.notify(jobid, "log", "Meeting context detected")
             for attendee in attendeeList:
                 self.addAttendees(attendee)
-        self.meetingDictionary['attendees'] = ",".join(list(self.meetingDictionary['attendees']))
-        self.notifier.notify(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
-        return  self.meetingDictionary
+            self.meetingDictionary['attendees'] = ",".join(list(self.meetingDictionary['attendees']))
+            self.meetingDictionary['jobid'] = jobid
+            self.notifier.notify(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
+            self.actionList.append(self.meetingDictionary)
+        testDict={'jobid':1234, 'type':'jiraBug', 'tickets':'CS-4456 CS-5566'}
+        self.actionList.append(testDict)
+        return  self.actionList
 
 
     def on_get(self, req, resp):

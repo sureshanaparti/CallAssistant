@@ -80,7 +80,9 @@ class AllResource(object):
         self.notifier.notify(jobid,"log", "transcript analysis received: %s" %r.text)
         print("json response%s" %r.text)
         self.notifier.notify(jobid, "log", "Sending action notification")
-        self.notifier.notifyAction(jobid, r.text)
+        j_data = json.loads(r.text)
+        for data in j_data:
+            self.notifier.notifyAction(jobid, json.dumps(data))
         resp.body = r.text
         resp.content_type = 'application/json'
         resp.append_header('Access-Control-Allow-Origin', "*")
