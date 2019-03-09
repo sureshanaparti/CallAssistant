@@ -35,6 +35,7 @@ var notify_clients = function(event_info) {
 exports.notify_event = function(req, res) {
     //Write to DB, send notifications to active websockets
 
+   console.log("Notify Event: ", req.body);
     //store in DB
    store_event(JSON.stringify(req.body));
 
