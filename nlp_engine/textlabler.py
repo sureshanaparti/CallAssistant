@@ -8,6 +8,7 @@ from wsgiref.simple_server import make_server
 import falcon
 import spacy
 import os
+from logger import logger
 
 #os.sys.path.append('/home/semicolon/coref/bin')
 
@@ -23,6 +24,7 @@ class AllResource(object):
         self.textLabler = spacy.load('en_core_web_lg')
         print("nlp resource loaded.")
         self.response = None
+        self.logger = logger("Analyser")
         self.teamMembers = {"Hari","Bharat","Suresh","Sadhu","Pavan","Srinivas","Lokesh","Alok","Srikanth","Santosh","Tirumala"}
     
     def addAttendees(self, attendees):
@@ -30,7 +32,7 @@ class AllResource(object):
         attendeeList.add(attendees)
         self.meetingDictionary['attendees'] = attendeeList
 
-    def lableText(self, text):
+    def lableText(self, text, jobid):
         doc = self.textLabler(text)
         print("token.text, token.dep_, token.head.text, token.head.pos_, [child for child in token.children]")
         print("%s" % doc)
@@ -100,16 +102,19 @@ class AllResource(object):
                                         self.meetingDictionary['room'] = argument.text
 
         if meetingDetected == True:
+            self.logger.log(jobid, "log", "Meeting context detected")
             for attendee in attendeeList:
                 self.addAttendees(attendee)
         self.meetingDictionary['attendees'] = ",".join(list(self.meetingDictionary['attendees']))
+        self.logger.log(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
         return  self.meetingDictionary
 
 
     def on_get(self, req, resp):
         text_param = req.get_param("text")
+        jobid = req.get_param("jobid")
         u = unicode_(text_param, "utf-8")
-        result = self.lableText(u) 
+        result = self.lableText(u,jobid) 
         resp.body = json.dumps(result)
         resp.content_type = 'application/json'
         resp.append_header('Access-Control-Allow-Origin', "*")
@@ -134,3 +139,4 @@ if __name__ == '__main__':
     APP.add_route('/action', RESSOURCE)
     HTTPD = make_server('0.0.0.0', 9000, APP)
     HTTPD.serve_forever()
+

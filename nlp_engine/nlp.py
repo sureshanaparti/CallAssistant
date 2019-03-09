@@ -42,13 +42,13 @@ class AllResource(object):
             resp.status = falcon.HTTP_200
             return resp
 
-        message = "Received input text:\n %s" %(text_param)
+        message = "Received input text: %s" %(text_param)
         print("%s" %message)
         self.logger.log(jobid,"log",message)
 
         if text_param is not None:
-            text = ",".join(text_param) if isinstance(text_param, list) else text_param
-            text = unicode_(text)
+            #text = ",".join(text_param) if isinstance(text_param, list) else text_param
+            text = unicode_(text_param)
             doc = self.nlp(text)
             if doc._.has_coref:
                 mentions = [{'start':    mention.start_char,
@@ -64,7 +64,10 @@ class AllResource(object):
                 self.response['mentions'] = mentions
                 self.response['clusters'] = clusters
                 self.response['resolved'] = resolved
+                self.logger.log(jobid, "log", "corefernced text:%s" % resolved)
             else:
+                print("###found no corefs sending original text")
+                self.logger.log(jobid, "log", "###found no corefs sending original text")
                 self.response['resolved'] = text_param
 
         print("response = %s" % self.response['resolved'])
@@ -74,6 +77,7 @@ class AllResource(object):
         #resp.status = falcon.HTTP_200
         self.logger.log(jobid, "log", "analyzing transcript")
         r = requests.get("http://localhost:9000/action?text=%s"%self.response['resolved'])      
+        self.logger.log(jobid,"log", "transcript analysis received: %s" %r.text)
         print("json response%s" %r.text)
         resp.body = r.text
         resp.content_type = 'application/json'
