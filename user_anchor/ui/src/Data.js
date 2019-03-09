@@ -4,19 +4,22 @@ const data = [
     type: 'action'
   },{
     message: 'hello 2',
-    type: 'log'
+    type: 'error',
+    source: 'nlp'
   },{
     message: 'hello 3',
     type: 'action'
   },{
     message: 'hello 4',
-    type: 'log'
+    type: 'log',
+    source: 'action_handler'
   },{
     message: 'hello 5',
     type: 'action'
   },{
     message: 'hello 6',
-    type: 'log'
+    type: 'log',
+    source: 'nlp'
   },{
     message: 'hello 7',
     type: 'action'
