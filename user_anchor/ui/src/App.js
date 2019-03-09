@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Notification from './Components/Notification';
 import ActionsOrReminders from './Components/ActionsOrReminders';
-import { Row, Col } from 'react-bootstrap';
+import data from './Data';
 import Websocket from 'react-websocket';
 
 class App extends React.Component {
@@ -17,6 +17,7 @@ class App extends React.Component {
     this.sideBar = React.createRef();
     this.main = React.createRef();
 
+    // Method Bindings
     this.showNotificationPane = this.showNotificationPane.bind(this);
   }
 
@@ -40,8 +41,11 @@ class App extends React.Component {
 
       let datain = this.state.data;
 
-      datain.unshift({message: result.message,
-        type: result.type});
+      datain.unshift({
+        message: result.message,
+        type: result.type,
+        source: result.source
+      });
 
       this.setState({
           data: datain

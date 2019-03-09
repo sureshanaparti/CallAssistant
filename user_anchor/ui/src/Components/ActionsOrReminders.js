@@ -1,7 +1,7 @@
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import ActionModal from './ActionModal';
 
 class ActionsOrReminders extends React.Component {
   constructor(props) {
@@ -22,9 +22,10 @@ class ActionsOrReminders extends React.Component {
     this.setState({ show: false });
   }
 
-  handleShow() {
+  handleShow(prop) {
     console.log("in show");
     this.setState({ show: true });
+    this.modalData = prop;
   }
 
   componentWillReceiveProps() {
@@ -40,23 +41,10 @@ class ActionsOrReminders extends React.Component {
           {data.map((prop, index) => {
             return (<ListGroup.Item variant="primary" key={`${index}`}>
               {prop.message}
-              <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow}>
+              <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow.bind(this, prop)}>
               view
               </Button>
-              <Modal show={this.state.show} onHide={this.handleClose}>
-                <Modal.Header closeButton>
-                  <Modal.Title>{prop.message}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>{prop.message}</Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={this.handleClose}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={this.handleClose}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
-              </Modal>
+              {this.state.show && <ActionModal modalData={this.modalData} handleClose={this.handleClose}/>}
             </ListGroup.Item>);
           })}
         </ListGroup>
