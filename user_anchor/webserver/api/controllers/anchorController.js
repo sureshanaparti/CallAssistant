@@ -58,10 +58,6 @@ exports.invoke_action = function(req, res) {
 
 console.log("Invoke Body: ", req.body);
 
-//req.body.type = "action";
-store_event(JSON.stringify(req.body))
-notify_clients(JSON.stringify(req.body));
-
 var req_body = req.body.message;
 var action = req.body.action;
 
@@ -69,6 +65,11 @@ var action = req.body.action;
 console.log(" Action:: ", req_body.action);
 
 if (action === "meeting") {
+
+//req.body.type = "action";
+store_event(JSON.stringify(req.body))
+notify_clients(JSON.stringify(req.body));
+
 console.log("Calling Meeting handler");
  request.post(
      anchor_url,
@@ -82,6 +83,11 @@ console.log("Calling Meeting handler");
 
 } else if (action === "jiraBug") {
 
+    req.body.url = "https://issues.accelerite.com/browse/"+req.body.message.id
+    req.body.message.subject = "Issue "+req.body.message.id
+
+    store_event(JSON.stringify(req.body))
+    notify_clients(JSON.stringify(req.body));
 
 }
 
