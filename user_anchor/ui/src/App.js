@@ -1,18 +1,17 @@
 import React, { Fragment } from "react";
 import Notification from './Components/Notification';
 import ActionsOrReminders from './Components/ActionsOrReminders';
-import data from './Data';
 import { Row, Col } from 'react-bootstrap';
+import Websocket from 'react-websocket';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showNotificationPane: false
+      showNotificationPane: false,
+      data: []
     }
-
-    this.data = data;
 
     // Creating ref
     this.sideBar = React.createRef();
@@ -35,6 +34,21 @@ class App extends React.Component {
     })
   }
 
+  handleSocketData(data) {
+    let result = JSON.parse(data);
+    if (!result.connection) {
+
+      let datain = this.state.data;
+
+      datain.unshift({message: result.message,
+        type: result.type});
+
+      this.setState({
+          data: datain
+      });
+    }
+  }
+
   render() {
     return (
       <Fragment>
@@ -44,13 +58,15 @@ class App extends React.Component {
         </header>
         <section id='section'>
           <div className='sidebar'  ref={this.sideBar}>
-            <Notification data={ this.data }/>
+            <Notification data={ this.state.data }/>
           </div>
           <div id='main' ref={this.main}>
-            <ActionsOrReminders data={ this.data }/>
+            <ActionsOrReminders data={ this.state.data }/>
           </div>
         </section>
-        
+        <Websocket url='ws://localhost:3000'
+            onMessage={this.handleSocketData.bind(this)}
+            />
       </Fragment>
     );
   }

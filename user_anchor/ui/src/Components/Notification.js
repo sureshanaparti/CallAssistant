@@ -8,12 +8,16 @@ class Notification extends React.Component {
     this.data = props.data;
   }
 
+  componentWillReceiveProps() {
+
+  }
+
   render() {
     return (
       <div>
         <h4>Notification</h4>
         <ListGroup>
-          {this.data.map((prop, index) => {
+          {this.props.data.map((prop, index) => {
             return (<ListGroup.Item key={`${index}`} variant="primary">
               {prop.message}
             </ListGroup.Item>);
