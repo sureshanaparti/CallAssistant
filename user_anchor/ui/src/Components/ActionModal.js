@@ -9,7 +9,9 @@ const ActionModal = ({modalData, handleClose}) => {
       </Modal.Header>
       <Modal.Body>
       {modalData.action === 'url' ? <iframe src={modalData.url} style={{
-        width: '100%'
+        width: '100%',
+        wordBreak: 'break-all',
+        overflowX: 'hidden'
       }}>
         <p>Your browser does not support iframes.</p>
       </iframe> : null}
