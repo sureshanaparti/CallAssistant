@@ -39,7 +39,7 @@ class ActionsOrReminders extends React.Component {
             console.log('action', prop);
             return (<ListGroup.Item variant="primary" key={`${index}`}>
               <Linkify>{typeof prop.message === 'object' ? JSON.stringify(prop.message) : prop.message}</Linkify>
-              {(prop.action === 'url' || prop.action === 'meeting') && <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow.bind(this, prop)}>
+              {(prop.action === 'url' || prop.action === 'meeting' || prop.action === 'jiraBug') && <Button variant="primary" size = "sm"  className = "float-right" onClick={this.handleShow.bind(this, prop)}>
                 view
               </Button> }
               {this.state.show && <ActionModal modalData={this.modalData} handleClose={this.handleClose}/>}

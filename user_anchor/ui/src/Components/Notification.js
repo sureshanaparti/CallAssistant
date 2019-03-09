@@ -32,7 +32,7 @@ class Notification extends React.Component {
             console.log('notifictaion', prop);
             return (<ListGroup.Item key={`${index}`} variant={prop.variant}>
               <Card>
-                <Card.Header>{prop.source}</Card.Header>
+                <Card.Header><strong>{prop.source}</strong></Card.Header>
                 <Card.Body>
                   {typeof prop.message === 'object' ? JSON.stringify(prop.message) : prop.message}
                 </Card.Body>
