@@ -44,7 +44,9 @@ class App extends React.Component {
       datain.unshift({
         message: result.message,
         type: result.type,
-        source: result.source
+        source: result.source,
+        action: result.action,
+        url: result.url
       });
 
       this.setState({
