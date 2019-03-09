@@ -2,14 +2,16 @@ import React, { Fragment } from "react";
 import Notification from './Components/Notification';
 import ActionsOrReminders from './Components/ActionsOrReminders';
 import data from './Data';
-import { Row, Col } from 'react-bootstrap';
+import ChatBot from './Components/ChatBot';
+import { Button } from 'react-bootstrap';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showNotificationPane: false
+      showNotificationPane: false,
+      showChatBot: false
     }
 
     this.data = data;
@@ -17,8 +19,13 @@ class App extends React.Component {
     // Creating ref
     this.sideBar = React.createRef();
     this.main = React.createRef();
+    this.chatbot = React.createRef();
+    this.chatBotContainer = React.createRef();
 
+    // Binding methods
     this.showNotificationPane = this.showNotificationPane.bind(this);
+    this.openChatBot = this.openChatBot.bind(this);
+    this.closeChatBot = this.closeChatBot.bind(this);
   }
 
   showNotificationPane() {
@@ -26,16 +33,35 @@ class App extends React.Component {
     if (showNotificationPane) {
       this.sideBar.current.style.width = "0";
       this.main.current.style.marginRight = "0";
+      this.chatbot.current.style.margin = "10px";
     } else {
       this.sideBar.current.style.width = "30%";
       this.main.current.style.marginRight = "30%";
+      this.chatbot.current.style.marginRight = "32%";
     }
     this.setState({
       showNotificationPane: !showNotificationPane
     })
   }
 
+  openChatBot() {
+    this.chatbot.current.style.display = 'none';
+    this.chatBotContainer.current.style.display = 'block';
+    this.setState({
+      showChatBot: true
+    });
+  }
+
+  closeChatBot() {
+    this.chatBotContainer.current.style.display = 'none';
+    this.chatbot.current.style.display = 'block';
+    this.setState({
+      showChatBot: false
+    })
+  }
+
   render() {
+    console.log('chatBot', ChatBot);
     return (
       <Fragment>
         <header>
@@ -50,7 +76,20 @@ class App extends React.Component {
             <ActionsOrReminders data={ this.data }/>
           </div>
         </section>
-        
+        <button
+          className='btn btn-info'
+          id='chatbot'
+          ref={this.chatbot}
+          onClick={this.openChatBot}
+        >
+          ChatBot
+        </button>
+        <div id='chatBotContainer' ref={this.chatBotContainer}>
+          {this.state.showChatBot &&
+            <ChatBot 
+              closeChatBot={this.closeChatBot.bind(this)}
+          />}
+        </div>
       </Fragment>
     );
   }
