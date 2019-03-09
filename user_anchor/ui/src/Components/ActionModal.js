@@ -18,10 +18,12 @@ const ActionModal = ({modalData, handleClose}) => {
       }}>
         <p>Your browser does not support iframes.</p>
       </iframe> :
-      `Host: ${modalData.host}`
-      `Attendees: ${modalData.attendees}`
-      `Day: ${modalData.date}`
-      `time: ${modalData.time}`
+      <p>
+        {`Host: ${modalData.message.host}`}
+        {`Attendees: ${modalData.message.attendees}`}
+        {`Day: ${modalData.message.date}`}
+        {`time: ${modalData.message.time}`}
+      </p>
     }
       </Modal.Body>
     </Modal>
