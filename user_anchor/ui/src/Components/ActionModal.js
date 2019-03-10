@@ -22,7 +22,7 @@ const ActionModal = ({modalData, handleClose}) => {
         {`Host: Pavan Kumar Aravapalli`}<br />
         {`Attendees: ${modalData.message.attendees}`}<br />
         {`Day: ${modalData.message.date}`}<br />
-        {`time: ${modalData.message.time}`}<br />
+        {`Time: ${modalData.message.time}`}<br />
       </p>
     }
       </Modal.Body>
