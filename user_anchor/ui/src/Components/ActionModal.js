@@ -7,7 +7,7 @@ const ActionModal = ({modalData, handleClose}) => {
       <Modal.Header closeButton>
         <Modal.Title>
           {modalData.action === 'meeting' || modalData.action === 'jiraBug' ?
-            modalData.message.subject.split('from')[0] : modalData.message}
+            modalData.message.subject : modalData.message}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
