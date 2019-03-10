@@ -84,7 +84,7 @@ console.log("Calling Meeting handler");
 } else if (action === "jiraBug") {
 
     req.body.url = "https://issues.accelerite.com/browse/"+req.body.message.id
-    req.body.message.subject = "Issue "+req.body.message.id +" from "
+    req.body.message.subject = "Issue "+req.body.message.id
 
     store_event(JSON.stringify(req.body))
     notify_clients(JSON.stringify(req.body));
