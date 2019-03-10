@@ -10,7 +10,7 @@ import spacy
 import requests
 import os
 from notifier import notifier
-
+import random
 #os.sys.path.append('/home/semicolon/coref/bin')
 
 try:
@@ -29,12 +29,16 @@ class AllResource(object):
         self.meetingDictionary = {'time':None, 'date':None, 'attendees':[], 'host':None, 'webex':None, 'room':None}
         self.teamMembers = {"Hari","Bharat","Suresh","Sadhu","Pavan","Srinivas","Lokesh","Alok","Srikanth","Santosh","Tirumala"}
 
+    def getRandom(self):
+        random.randint(3456,9999)
 
     def on_get(self, req, resp):
         self.response = {}
 
         text_param = req.get_param("text")
         jobid = req.get_param("jobid")
+        if jobid is None:
+            jobid = self.getRandom()
         if text_param is None:
             resp.body = json.dumps("No input text received")
             resp.content_type = 'application/json'

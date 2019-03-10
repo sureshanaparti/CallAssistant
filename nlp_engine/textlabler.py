@@ -66,7 +66,7 @@ class AllResource(object):
         if str1[-2:].lower() == "am" and str1[:2] == "12":
             return "00" + str1[2:-2]
         elif str1[-2:].lower() == "am":
-            return str1[:-2]
+            return str1[:-2].strip() + ":00"
         elif str1[-2:].lower() == "pm" and str1[:2] == "12":
             return str1[:-2]
         else:
@@ -197,6 +197,10 @@ class AllResource(object):
                 self.meetingDictionary["time"] = "3:00 p.m."
 
             self.meetingDictionary["starttime"] = self.find_date(self.meetingDictionary["date"]).strftime("%Y-%m-%dT")+self.timeconvert(self.meetingDictionary['time'])
+            starttime = self.meetingDictionary['starttime']
+            hour = int(starttime[11:13]) + 1
+            endtime = starttime[:11] + str(hour) + starttime[-6:]
+            self.meetingDictionary['endtime'] = endtime
             self.notifier.notify(jobid, "log", "Extracted meeting related params %s" % json.dumps(self.meetingDictionary))
             self.actionList.append(self.meetingDictionary)
 
@@ -214,6 +218,7 @@ class AllResource(object):
         text_param = req.get_param("text")
         caller = req.get_param("caller")
         callee = req.get_param("callee")
+        print("caller %s, callee %s"%(caller, callee))
         jobid = req.get_param("jobid")
         u = unicode_(text_param, "utf-8")
         result = self.lableText(u,jobid, caller, callee) 
