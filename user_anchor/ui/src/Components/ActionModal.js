@@ -7,7 +7,7 @@ const ActionModal = ({modalData, handleClose}) => {
       <Modal.Header closeButton>
         <Modal.Title>
           {modalData.action === 'meeting' || modalData.action === 'jiraBug' ?
-            modalData.message.subject : modalData.message}
+            modalData.message.subject.split('from')[0] : modalData.message}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -19,10 +19,10 @@ const ActionModal = ({modalData, handleClose}) => {
         <p>Your browser does not support iframes.</p>
       </iframe> :
       <p>
-        {`Host: ${modalData.message.host}`}
-        {`Attendees: ${modalData.message.attendees}`}
-        {`Day: ${modalData.message.date}`}
-        {`time: ${modalData.message.time}`}
+        {`Host: Pavan Kumar Aravapalli`}<br />
+        {`Attendees: ${modalData.message.attendees}`}<br />
+        {`Day: ${modalData.message.date}`}<br />
+        {`time: ${modalData.message.time}`}<br />
       </p>
     }
       </Modal.Body>
