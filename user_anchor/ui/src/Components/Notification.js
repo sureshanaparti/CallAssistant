@@ -10,7 +10,7 @@ class Notification extends React.Component {
 
   render() {
     const data = this.props.data.map(prop => {
-      if (prop.source === 'nlp' || prop.source === 'NLP-corefrencer') {
+      if (prop.source === 'nlp' || prop.source === 'NLP-coreferencer') {
         prop.variant = 'dark'
       } else if (prop.source === 'action_handler') {
         prop.variant = 'light';
