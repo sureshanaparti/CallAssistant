@@ -9,6 +9,7 @@ class notifier():
             return
         port = "3000"
         self.logger_url = "http://%s:%s/notifyEvent"%(self.logger_ip,port)
+        self.action_url = "http://%s:%s/invokeAction"%(self.logger_ip,port)
         self.service = service
 
 
@@ -16,14 +17,34 @@ class notifier():
         if self.logger_ip is None:
            return
         self.data = {}
-        self.data['jobid'] = jobId
-        self.data['type'] = tp
+        self.data["jobid"] = jobId
+        self.data["type"] = tp
         if service is None:
            service = self.service 
-        self.data['source'] = service
-        self.data['message'] = message
+        self.data["source"] = service
+        self.data["message"] = message
         print("logging message %s" % (json.dumps(self.data)))
         custom = {'content-type': 'application/json'}
         r = requests.post(self.logger_url,json.dumps(self.data), headers=custom)
         if (r.status_code != 200):
            print("logging failed: %s"%r.text)
+
+    def notifyAction(self, jobId, action, message, service=None):
+        if self.logger_ip is None:
+           return
+        self.data = {}
+        self.data["jobid"] = jobId
+        self.data["type"] = "action"
+        if service is None:
+           service = self.service
+        self.data["source"] = service
+        self.data["message"] = message
+        self.data["action"] = action
+        print("Action url %s" % self.action_url)
+        print("logging message %s" % (json.dumps(self.data)))
+        custom = {'content-type': 'application/json'}
+        print("Action url %s" % self.action_url)
+        r = requests.post(self.action_url, json=self.data, headers=custom)
+        if (r.status_code != 200):
+           print("logging failed: %s"%r.text)
+
